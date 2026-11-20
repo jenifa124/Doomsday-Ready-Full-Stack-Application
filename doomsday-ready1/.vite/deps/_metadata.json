@@ -1,0 +1,38 @@
+{
+  "hash": "7a49ac11",
+  "configHash": "3462003d",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "1d6c379a",
+  "optimized": {
+    "lucide-react": {
+      "src": "../../doomsday-ready/frontend/node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "ebf90751",
+      "needsInterop": false
+    },
+    "react-dom/client": {
+      "src": "../../doomsday-ready/frontend/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "e04883b9",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../doomsday-ready/frontend/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "6b842d7d",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../doomsday-ready/frontend/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "17edf330",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "react-DXuZhM-T": {
+      "file": "react-DXuZhM-T.js",
+      "isDynamicEntry": false
+    }
+  }
+}
