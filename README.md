@@ -33,7 +33,7 @@ Testing	Node.js built-in test runner
 Optional deployment	Docker Compose
 
 
-Project Structure
+# Project Structure
 doomsday-ready/
 ├── backend/
 │   ├── server.js
@@ -78,14 +78,16 @@ Frontend: http://localhost:5173
 Keep both terminals running. The frontend communicates with the backend API. If a port is occupied, stop the conflicting process before retrying. On Windows, if the native SQLite dependency fails to load, try npm rebuild better-sqlite3 inside backend and check the terminal error output.
 REST API
 All endpoints use the /api prefix.
-Method	Endpoint	Description
-POST	/api/movies	Create a movie
-GET	/api/movies	List movies
-PATCH	/api/movies/:id	Update movie fields, watched status, or prerequisites
-GET	/api/movies/:id/rewatch-order	Generate prerequisite order and progress
-POST	/api/cinemas	Create a cinema
-GET	/api/cinemas	List cinemas
-GET	/api/cinemas/:id/booking?groupSize=6	Calculate an exact-seat minimum-bundle quote
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| POST | `/api/movies` | Create a movie |
+| GET | `/api/movies` | List movies |
+| PATCH | `/api/movies/:id` | Update movie fields, watched status, or prerequisites |
+| GET | `/api/movies/:id/rewatch-order` | Generate prerequisite order and progress |
+| POST | `/api/cinemas` | Create a cinema |
+| GET | `/api/cinemas` | List cinemas |
+| GET | `/api/cinemas/:id/booking?groupSize=6` | Calculate an exact-seat minimum-bundle quote |
 
 
 Example movie request:
@@ -105,7 +107,7 @@ Content-Type: application/json
   "name": "Stark Cinema",
   "bundleSizes": [1, 3, 4]
 }
-Algorithms
+# Algorithms
 Rewatch Order — DFS and Topological Ordering
 The movie dependencies form a directed graph. A depth-first traversal visits each prerequisite before adding its dependent movie to the result. Visitation states prevent duplicates and detect cycles. The target movie is excluded from its own rewatch plan. Creating or updating a dependency that introduces a cycle returns HTTP 409 CIRCULAR_DEPENDENCY.
 
@@ -119,7 +121,7 @@ Bundle sizes	Group size	Expected result
 4, 6	7	Not possible
 
 
-Data Model
+# Data Model
 ```mermaid
 erDiagram
     MOVIES ||--o{ PREREQUISITES : has
@@ -145,7 +147,7 @@ erDiagram
         int size
     }
 ```
-Validation and Assumptions
+# Validation and Assumptions
 - Movie titles and cinema names must be unique; the implementation treats them case-insensitively.
 - Release year is an integer from 1 to 9999; runtime is 1–300 minutes.
 - Prerequisites must refer to existing movies and cannot introduce cycles.
@@ -155,18 +157,20 @@ Validation and Assumptions
 - No official MCU watch guide is bundled; movies and dependencies are entered by the user.
 - When multiple optimal bundle combinations exist, the algorithm returns one of them.
 - Booking does not purchase or reserve tickets.
-Testing
+# Testing
 Run the backend algorithm tests:
 cd backend
 npm test
-Before submission, manually verify creating/updating movies, watched toggles, rewatch order and progress, circular-dependency rejection, all four booking examples, and frontend-to-backend communication. Do not claim that all integration tests pass until you have run them.
-Docker Compose (Optional)
+
+
+# Docker Compose (Optional)
 With Docker installed, from the project root:
 docker compose up --build
 Then open http://localhost:5173.
-AI Tools Usage
-AI tools were used to help generate the initial React UI, Express routes, SQLite schema, tests, and documentation.
 
+# AI Tools Usage
+AI tools were used to help generate the initial React UI, Express routes, SQLite schema, tests, and documentation.
 I set up and ran the full project locally, fixed environment and dependency issues (including better-sqlite3 on Windows and Vite setup), tested all three features (Movies, Rewatch Plan, Booking), and verified the required examples from the challenge. I reviewed the DFS cycle detection / topological ordering and the minimum-bundle dynamic programming logic so I understand how both features work.
-Assessment
+
+# Assessment
 Prepared for Blinto Talent Accelerator 2027 — Full Stack Developer Internship Assessment.
