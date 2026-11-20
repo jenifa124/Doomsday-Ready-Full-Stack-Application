@@ -1,5 +1,6 @@
 # Doomsday-Ready-Full-Stack-Application
-#Doomsday Ready
+# Doomsday Ready
+
 MCU Rewatch Planner & Opening-Night Cinema Bundle Calculator
 Blinto Talent Accelerator 2027 — Full Stack Developer Internship Assessment
 Overview
